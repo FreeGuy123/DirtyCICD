@@ -119,8 +119,8 @@ function CreateAKSHttpRequestMessageAndInvokeRestAPI {
         elseif ( $CommandToExecute[0] -eq "Deployment" -and $CommandToExecute[1] -eq "Delete" -and $InvokeReturn.status -eq "Success" ) {}
         elseif ( ($CommandToExecute[1] -eq "Get" -and $InvokeReturn.code -eq 404) -or ( $CommandToExecute[1] -eq "Get" -and $InvokeReturnFull.statuscode.Value__ -eq 404 ) ) {}
         elseif ( ($CommandToExecute[1] -eq "Get" -and $InvokeReturn.code -eq 200) -or ( $CommandToExecute[1] -eq "Get" -and $InvokeReturnFull.statuscode.Value__ -eq 200 ) ) {}
-        elseif ( $InvokeReturnFull.statuscode.Value__ -eq 409 -or $InvokeReturn.code -eq 409 ) { throw "$CommandToExecute.Exception.Conflict.409" } 
-        elseif ( $InvokeReturnFull.statuscode.Value__ -eq 405 -or $InvokeReturn.code -eq 405 ) { throw "$CommandToExecute.Exception.MethodNotAllowed.405" }
+        elseif ( $InvokeReturnFull.statuscode.Value__ -eq 409 -or $InvokeReturn.code -eq 409 ) { throw "$Command.Exception.Conflict.409" } 
+        elseif ( $InvokeReturnFull.statuscode.Value__ -eq 405 -or $InvokeReturn.code -eq 405 ) { throw "$Command.Exception.MethodNotAllowed.405" }
         else { 
             do {
                 if ( "NameSpace" -eq $CommandToExecute[0] -and "Delete" -eq $CommandToExecute[1] ) { $ApiVersion = "/api/v1/namespaces/$AKSNameSpaceName" };
